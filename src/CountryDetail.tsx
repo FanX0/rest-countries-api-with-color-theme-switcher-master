@@ -39,7 +39,7 @@ const CountryDetail = () => {
       try {
         setLoading(true);
         setError(null);
-        const res = await fetch("data.json");
+        const res = await fetch("/data.json");
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const json: Country[] = await res.json();
         const match = json.find((item) => item.name === countryName);
@@ -91,11 +91,15 @@ const CountryDetail = () => {
                       <p>Top Level Domain: {country.topLevelDomain}</p>
                       <p>
                         Currencies:{" "}
-                        {country.currencies.map((item) => item.name).join(", ")}
+                        {Array.isArray(country.currencies) && country.currencies.length > 0
+                          ? country.currencies.map((item) => item.name).join(", ")
+                          : "N/A"}
                       </p>
                       <p>
                         Languages:{" "}
-                        {country.languages.map((item) => item.name).join(", ")}
+                        {Array.isArray(country.languages) && country.languages.length > 0
+                          ? country.languages.map((item) => item.name).join(", ")
+                          : "N/A"}
                       </p>
                     </div>
                     {Array.isArray(country.borders) &&

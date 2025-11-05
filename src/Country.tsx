@@ -3,10 +3,10 @@ import Search from "./components/Search";
 import { useEffect, useState } from "react";
 import Filter from "./components/Filter";
 import Card from "./components/Card";
-import type { Country } from "@/types/Country";
+import type { Country as CountryModel } from "@/types/Country";
 
 const Country = () => {
-  const [country, setCountry] = useState<Country[] | null>(null);
+  const [country, setCountry] = useState<CountryModel[] | null>(null);
   const [query, setQuery] = useState<string>("");
   const [region, setRegion] = useState<
     "All" | "Africa" | "Americas" | "Asia" | "Europe" | "Oceania"
@@ -38,9 +38,9 @@ const Country = () => {
       try {
         setLoading(true);
         setError(null);
-        const res = await fetch("data.json");
+        const res = await fetch("/data.json");
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const json: Country[] = await res.json();
+        const json: CountryModel[] = await res.json();
         setCountry(json);
       } catch (e) {
         const msg = e instanceof Error ? e.message : String(e);
