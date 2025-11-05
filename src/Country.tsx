@@ -69,10 +69,10 @@ const Country = () => {
             <Filter value={region} onChange={setRegion} />
           </header>
           <section className="mt-[4rem] mx-[2rem] lg:mx-0">
-            <ul className="grid grid-cols-1 gap-[2rem] lg:grid-cols-4 lg:gap-[4rem]">
-              {loading && <p>Loading...</p>}
-              {error && <p>Error: {error}</p>}
+            {loading && <p>Loading...</p>}
+            {error && <p>Error: {error}</p>}
 
+            <ul className="grid grid-cols-1 gap-[2rem] lg:grid-cols-4 lg:gap-[4rem]">
               {filtered.map((item) => (
                 <Card key={item.name} country={item} />
               ))}
