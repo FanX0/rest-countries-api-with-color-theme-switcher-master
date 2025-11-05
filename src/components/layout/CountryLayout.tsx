@@ -1,10 +1,18 @@
 import type { ReactNode } from "react";
 import Navbar from "./Navbar";
 
-const CountryLayout = ({ children }: { children: ReactNode }) => {
+const CountryLayout = ({
+  children,
+  darkMode,
+  handleDarkMode,
+}: {
+  children: ReactNode;
+  darkMode: "dark" | "light";
+  handleDarkMode: () => void;
+}) => {
   return (
     <>
-      <Navbar />
+      <Navbar darkMode={darkMode} handleDarkMode={handleDarkMode} />
       {children}
     </>
   );
