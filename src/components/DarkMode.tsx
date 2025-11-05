@@ -8,7 +8,11 @@ const DarkMode = ({
   handleDarkMode: () => void;
 }) => {
   return (
-    <button onClick={handleDarkMode} className="flex items-center">
+    <button
+      type="button"
+      onClick={handleDarkMode}
+      className="flex items-center"
+    >
       {darkMode === "dark" ? (
         <>
           <img src={sunIcon} alt="dark mode icon" className="w-5 h-5 mr-2" />
